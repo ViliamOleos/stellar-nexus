@@ -1,1 +1,9 @@
-# Add more here if needed
+# Ignore Everything
+/**
+
+# Repository Files
+!/.gitignore
+!/*.md
+
+# Stellar Nexus
+!/stellarnexus/**
