@@ -5,5 +5,8 @@
 !/.gitignore
 !/*.md
 
+# Install Resources
+!/install/**
+
 # Stellar Nexus
 !/stellarnexus/stellarnexus/**
