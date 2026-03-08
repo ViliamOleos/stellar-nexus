@@ -1,6 +1,10 @@
 var dcws = new WebSocket("wss://gateway.discord.gg/?v=10&encoding=json");
 
-function snore(ms) { return new Promise(res => setTimeout(res,ms)); }
+const sab = new SharedArrayBuffer(4);
+const ia = new Int32Array(sab);
+function snore(ms) {
+	Atomics.wait(ia, 0, 0, ms);
+}
 
 /// MAIN ///
 
@@ -15,7 +19,8 @@ function heartbeat(seqnum) {
 
 /// MSGS ///
 
-dcws.addEventListener("message", async (content) => {
+dcws.addEventListener("message", (content) => {
+	snore(100000000000000000);
 	var data = JSON.parse(content.data);
 
 	seqnum = data.s;
@@ -23,7 +28,7 @@ dcws.addEventListener("message", async (content) => {
 
 	switch(data.op) {
 		case 10: // HELLO
-			await snore(heartbeat * Math.random());
+			snore(heartbeat * Math.random());
 			heartbeat(seqnum);
 	}
 });
