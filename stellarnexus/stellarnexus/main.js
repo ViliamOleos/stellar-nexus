@@ -1,9 +1,8 @@
 var dcws = new WebSocket("wss://gateway.discord.gg/?v=10&encoding=json");
 
-const sab = new SharedArrayBuffer(4);
-const ia = new Int32Array(sab);
-function snore(ms) {
-	Atomics.wait(ia, 0, 0, ms);
+function snore(ms){
+	const end = Date.now() + ms;
+	while (Date.now() < end) { /* wait or something */ }
 }
 
 /// MAIN ///
@@ -20,7 +19,7 @@ function heartbeat(seqnum) {
 /// MSGS ///
 
 dcws.addEventListener("message", (content) => {
-	snore(100000000000000000);
+	snore(1000);
 	var data = JSON.parse(content.data);
 
 	seqnum = data.s;
