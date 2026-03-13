@@ -1,4 +1,10 @@
 var dcws = new WebSocket("wss://gateway.discord.gg/?v=10&encoding=json");
+var hbid = 0;
+
+function dcws_shutdown() { 
+	clearInterval(hbid);
+	dcws.close();
+}
 
 function snore(ms){
 	const end = Date.now() + ms;
@@ -48,7 +54,7 @@ dcws.onclose = e => console.log("Offline:", e);
 			
 		case 7: // RECONNECT
 			console.log("server wants reconnect :d");
-			dcws.close();
+			dcws_shutdown();
 		break;
 
 		
