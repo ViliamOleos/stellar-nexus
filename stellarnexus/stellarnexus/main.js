@@ -44,7 +44,7 @@ dcws.onclose = e => console.log("Offline:", e);
 		case 10: // HELLO
 			snore(Math.random() * heartbeat_interval);
 			heartbeat(seqnum);
-			setInterval(() => heartbeat(seqnum), heartbeat_interval);
+			hbid = setInterval(() => heartbeat(seqnum), heartbeat_interval);
 		break;
 			
         case 11: // HEARTBEATACK
