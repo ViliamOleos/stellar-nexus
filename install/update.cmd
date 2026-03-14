@@ -1,11 +1,11 @@
 @ECHO OFF
 
-echo This will copy ^& replace the newest nginx.conf file located here into Your nginx installation.
-echo.
-echo This script it tailored specifically to updating the repo, not installing anything.
-echo Make sure You've got nginx installed in the project before updating.
-echo (note: major structure changes would obviously break the script)
-echo. 
-pause
+ECHO.
+ECHO.  This will copy ^& replace the newest nginx.conf file located here into Your nginx installation.
+ECHO The script it tailored specifically to updating the repo, not installing anything.
+ECHO Make sure You've got nginx installed in the project before updating.
+ECHO.		(note: major structure changes would obviously break the script)
+ECHO. 
+PAUSE
 
-xcopy /s /y nginx.conf ..\stellarnexus\conf\
+XCOPY /s /y nginx.conf ..\stellarnexus\conf\
