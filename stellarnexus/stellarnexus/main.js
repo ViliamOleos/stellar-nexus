@@ -54,24 +54,40 @@ dcws.addEventListener("message", (content) => {
 
 			snore(1000);
 
+					/*
 			var json = new Object();
 				json.op = 2;
 				var d = new Object();
 					d.token = "";
 					d.intents = ;
 				json.d = d;
+					*/
 
 		break; case 1: // HB
 
-			heatbeat();
+			heartbeat();
 
 		break; case 7: // RECONNECT
 
-			console.log("Discord wants reconnect");
+			console.log("Discord wants reconnect ;(");
 			dcws_shutdown();
 
 		break;
 	}
 });
+
+/// GAMEMAIN ///
+
+main();
+
+function main() {
+	const GL = window.renderbuf.getContext("webgl");
+	if(GL == null) {
+		alert("Can't get WebGL for rendering. Perhaps Your browser doesn't support it?");
+	}
+
+	GL.clearColor(1.0, 0.0, 0.0, 1.0);
+	GL.clear(gl.COLOR_BUFFER_BIT);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////
