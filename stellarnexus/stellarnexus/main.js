@@ -38,24 +38,38 @@ dcws.addEventListener("message", (content) => {
 	
 	switch(data.op) {
         case 11: // ACK
+
 			console.log("Discord acknowledged Heartbeat");
 			heartbeatACK = true;
-		break;
 
-		case 10: // HELLO
+		break; case 10: // HELLO
+
 			heartbeatInterval = data.d.heartbeat_interval;
+
+			// heartbeat after time
 			snore(Math.random() * heartbeatInterval); heartbeat();
+
 			// setInterval will heartbeat every [heartbeatInterval]ms
 			hbid = setInterval(() => heartbeat(), heartbeatInterval);
-		break;
 
-		case 1: // HB
+			snore(1000);
+
+			var json = new Object();
+				json.op = 2;
+				var d = new Object();
+					d.token = "";
+					d.intents = ;
+				json.d = d;
+
+		break; case 1: // HB
+
 			heatbeat();
-		break;
-			
-		case 7: // RECONNECT
+
+		break; case 7: // RECONNECT
+
 			console.log("Discord wants reconnect");
 			dcws_shutdown();
+
 		break;
 	}
 });
